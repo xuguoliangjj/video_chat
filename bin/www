@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+var debug = require('debug')('xuguoliang');
+var app = require('../app');
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+/*socket start*/
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+    socket.on('join', function (data) {
+        socket.broadcast.emit("welcome",{joinName:data.joinName});
+    });
+    socket.on('send', function (data) {
+        socket.broadcast.emit("allsend",{text:data.text});
+    });
+
+});
+

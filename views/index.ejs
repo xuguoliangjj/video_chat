@@ -1,0 +1,146 @@
+<%- include header%>
+  <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+
+          <div class="col-xs-12 col-sm-7">
+
+              <div class="row">
+                  <div class="col-sm-6 col-md-4"><button class="btn btn-primary pull-right visible-xs"  data-toggle="offcanvas">聊天</button>
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail">
+                          <img src="http://www.yugaopian.com/poster/poster/s500/2014/06/iloxty6c.jpg" alt="...">
+                          <div class="caption">
+                              <h3>忍者神龟</h3>
+                              <p>挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强挖掘机技术哪家强</p>
+                              <p><a href="/video" class="btn btn-primary" role="button">播放</a> <a href="#" class="btn btn-default" role="button">评论</a></p>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+
+
+              <ul class="pagination">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+              </ul>
+
+
+          </div><!--/span-->
+
+          <div class="col-xs-6 col-sm-5 sidebar-offcanvas" id="sidebar" role="navigation">
+              <div class="panel panel-primary o-chat">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">聊天交流</h3>
+                  </div>
+                  <div class="panel-body" style="overflow-y: scroll; height:90%;">
+                    <!-- 这里是主聊天内容输出部位-->
+                  </div>
+                  <div class="input-group o-input-chat navbar-fixed-bottom">
+                      <input type="text" class="form-control o-send-input" placeholder="在这里输入你的想说的话......">
+                      <span class="input-group-addon o-send">发送</span>
+                  </div>
+              </div>
+          </div><!--/span-->
+      </div><!--/row-->
+
+<%- include footer%>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="offcanvas"]').click(function () {
+            $('.row-offcanvas').toggleClass('active')
+        });
+
+        var chat = io.connect('http://192.168.191.1:3000');
+        sendTo("你加入了聊天");
+
+
+        chat.emit('join',{joinName:"<span style='color: blue'>Come's news</span>"});
+        chat.on('welcome', function (data) {
+            sendTo(data.joinName);
+        });
+
+        chat.on('allsend', function (data) {
+            sendTo(data.text);
+        });
+
+        $(".o-send-input").keypress(function(event){
+            if(event.keyCode == 13 && $(".o-send-input").val()!='')
+            {
+                sendTo($(".o-send-input").val());
+                chat.emit("send",{text:$(".o-send-input").val()});
+                $(".o-send-input").val('');
+            }
+        });
+
+        $(".o-send").click(function(){
+            if($(".o-send-input").val()!='') {
+                sendTo($(".o-send-input").val());
+                chat.emit("send", {text: $(".o-send-input").val()});
+                $(".o-send-input").val('');
+            }
+        });
+    });
+
+    function sendTo(text)
+    {
+        $(".panel-body").append($("<div class='well well-sm'></div>").html(text));
+        $('.panel-body').animate({scrollTop:10000000000000},0);
+    }
+
+</script>
